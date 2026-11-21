@@ -10,6 +10,7 @@ check is never skipped.
 |---|---|---|---|
 | Commits | [`commits.yml`](./commits.yml) | pull requests | `cog check` on the commits of the pull request: Conventional Commits and allowed scopes |
 | Secrets scan | [`secrets-scan.yml`](./secrets-scan.yml) | pull requests, pushes to `main` | gitleaks |
+| Web CI | [`web-ci.yml`](./web-ci.yml) | pull requests, pushes to `main` | lint, format check, type check, tests and build of `web/` |
 
 ## Conventions
 

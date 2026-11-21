@@ -3,4 +3,4 @@
 tag_prefix = "v"
 ignore_merge_commits = true
 
-scopes = ["repo", "docs", "ci", "deps"]
+scopes = ["repo", "docs", "ci", "deps", "web"]

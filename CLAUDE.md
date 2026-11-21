@@ -26,13 +26,18 @@ changes it according to its needs.
 
 ## What this repo is
 
-<One or two sentences: the client or product, what it delivers.>
+Displate virtual wall: a local-only Vue app to search Displate posters, pick a size (M, L, XL) and arrange them on a virtual wall at real scale. Unofficial, not affiliated with Displate.
 
 ## Structure
 
-<The top-level folders of the repo and what each holds.>
+- `web/`: the Vue app (see [`web/README.md`](./web/README.md)).
+- `docs/`: project documentation.
+- `.github/`: issue templates and CI workflows.
 
 ## Project rules
 
-<Only rules specific to this project: hard constraints, changes that need a manual review, how it is
-versioned and released, which CI workflows it runs.>
+- The app runs locally only. The Displate API is reached through the Vite proxy, which must forward
+  only the search path and keep its rate limit; changes to the proxy need a manual review.
+- Commit scope for the app is `web`.
+- CI: `commits.yml` (Conventional Commits), `secrets-scan.yml` (gitleaks), `web-ci.yml` (lint, format,
+  type check, test, build for `web/`).
