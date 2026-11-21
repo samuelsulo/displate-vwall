@@ -1,5 +1,4 @@
-# Git hooks. Hook names follow <component>-<action>. A component adds its own hooks when it is
-# created (see the repo-standard skill).
+# Git hooks. Each project adds its own (lint, format, tests) as it needs them.
 commit-msg:
   commands:
     conventional-commit:
@@ -7,10 +6,5 @@ commit-msg:
 
 pre-commit:
   commands:
-    repo-check-style:
-      run: scripts/check-style.sh --staged
-
-pre-push:
-  commands:
-    conventional-commits:
-      run: cog check
+    secrets-gitleaks:
+      run: gitleaks git --pre-commit --staged --redact --no-banner

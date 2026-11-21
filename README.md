@@ -1,19 +1,25 @@
 # template-project
 
-Starting point for every project: the files that are the same whatever the project is. A project
-adds what it needs (an app, infrastructure, a brand) on top of it.
+Starting point for every project: a way of working and the base tools. Everything else (CI
+workflows, versioning and release, the structure of `docs/`, apps, infrastructure, brand) is
+decided by each project according to its needs.
 
 ## What is in it
 
 | Path | Purpose |
 |---|---|
-| `CLAUDE.md` | Short guardrails: pointer to the `repo-standard` skill plus the project's own rules |
-| `.repo-standard.yml` | Profile, parts and versioning of the repo; `template` records the tag it came from |
-| `cog.toml`, `lefthook.yml` | Conventional Commits, scopes, release, git hooks |
-| `mise.toml` | Pinned tools and the `setup` task |
-| `scripts/check-style.sh` | Em dash and kebab-case checks |
-| `.github/` | Issue templates and the CI workflows (commits, secrets scan) |
-| `docs/` | `adr`, `architecture`, `guides`, `runbooks`, each with a README |
+| `CLAUDE.md` | How we work and the rules for the agent, plus the project's own sections to fill in |
+| `cog.toml`, `lefthook.yml` | Conventional Commits (scopes, `commit-msg` hook) and the gitleaks `pre-commit` hook |
+| `mise.toml` | Pinned tools (lefthook, cocogitto, gh, gitleaks) and the `setup` task |
+| `.github/ISSUE_TEMPLATE/` | Issue templates: a starting point, extend or remove them |
+| `docs/` | Documentation of the project, structured as the project needs; starts with `working-method.md` |
+
+## How we work
+
+The developer works with the AI agent: first they plan and create the issues on GitHub, then each
+issue is solved by a pull request that closes it. One issue, one pull request. The method and the
+git strategy are in [`docs/working-method.md`](./docs/working-method.md); a project extends or
+changes them according to its needs.
 
 ## Start a project
 
@@ -27,20 +33,7 @@ adds what it needs (an app, infrastructure, a brand) on top of it.
 
    Then create the GitHub repository from that folder and push, when the owner confirms
    (`gh repo create <name> --private --source . --push`). Do not use "Use this template" on GitHub:
-   it makes a first commit called "Initial commit" and no tag, so `cog check` and the `Commits`
-   workflow fail on the first push.
-2. Fill in `CLAUDE.md` and this README, and set `profile` in `.repo-standard.yml`.
+   it makes a first commit called "Initial commit", which is not a Conventional Commit.
+2. Fill in the sections of `CLAUDE.md` and this README.
 3. `mise install && mise run setup` to install the tools and the git hooks.
-4. Ask for what the project needs: the `repo-standard` skill adds the parts (`apps/<name>`,
-   `infrastructure/`, `brand/`) with their workflows, hooks and scopes.
-
-## Keep it in sync
-
-Rules and procedures live in the skills, files live here. To see what a project has drifted from,
-ask for an audit with the `repo-standard` skill: it compares the repo with this template at the tag
-recorded in `.repo-standard.yml`.
-
-## Versioning
-
-One tag `vX.Y.Z` for the whole repo, managed with cocogitto. A project records the tag it was
-created from, so an update is a diff between two tags.
+4. Add what the project needs: CI workflows, versioning and release, further hooks and tools.

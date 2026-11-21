@@ -1,15 +1,6 @@
-# Cocogitto: one tag vX.Y.Z for the whole repo. For per-component tags see the repo-standard skill.
+# Cocogitto. Versioning, tags, changelog and release are up to the project: configure them here
+# when the project needs them. Extend `scopes` with one entry per part of the project.
 tag_prefix = "v"
 ignore_merge_commits = true
 
-# repo, version and docs always. Add one scope per component in the same change that adds it.
-scopes = ["repo", "version", "docs", "ci", "deps", "scripts"]
-
-post_bump_hooks = [
-  "git push origin HEAD && git push origin v{{version}} && gh release create v{{version}} --title \"v{{version}}\" --notes \"$(cog changelog --at v{{version}})\"",
-]
-
-[changelog]
-path = "CHANGELOG.md"
-template = "remote"
-remote = "github.com"
+scopes = ["repo", "docs", "ci", "deps"]

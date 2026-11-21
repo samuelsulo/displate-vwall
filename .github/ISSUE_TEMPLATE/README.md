@@ -43,6 +43,11 @@ Epic it belongs to under "References".
 - Sections in square brackets (e.g. `[Describe...]`) are placeholders to
   be replaced, not text to leave in the published issue.
 
+## Adapting the Templates
+
+These templates are the starting point of every project. A project can extend, change or remove
+them according to its needs; keep this README in sync with what is in the folder.
+
 ## Adding a Template
 
 A new `.md` file in this folder with the YAML front matter (`name`,
