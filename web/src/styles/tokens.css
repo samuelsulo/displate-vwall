@@ -7,6 +7,7 @@
   --color-text-primary: #111111;
   --color-text-secondary: #555555;
   --color-text-tertiary: #767676;
+  --color-surface-hover: #ebebeb;
   --color-border: #e2e2e2;
   --color-border-strong: #111111;
   --color-accent: #e8003d;
@@ -33,7 +34,11 @@
   --space-8: 2rem;
 
   --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
   --radius-pill: 999px;
+
+  --line-height-relaxed: 1.7;
 
   --duration-fast: 140ms;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);

@@ -7,7 +7,11 @@
   "footer": {
     "version": "v{version}",
     "credits": "Credits",
-    "disclaimer": "Unofficial tool, not affiliated with Displate. Images belong to their owners."
+    "disclaimer": "Unofficial tool, not affiliated with Displate. Images belong to their owners.",
+    "cookieLink": "Cookie preferences",
+    "cookiePolicy": "Cookie Policy",
+    "privacyPolicy": "Privacy Policy",
+    "legal": "Legal"
   },
   "header": {
     "language": "Language"
@@ -15,5 +19,38 @@
   "panels": {
     "search": "Search posters",
     "wall": "Your wall"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Data saved in your browser",
+      "description": "This app saves in your browser only the data it needs to work: the language, your wall and your choice here. No cookies, no analytics, no tracking. You can accept, reject or see the details.",
+      "acceptAll": "Accept",
+      "rejectAll": "Reject",
+      "customize": "Customize"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "save": "Save preferences",
+      "close": "Close",
+      "reopenLink": "Cookie preferences"
+    },
+    "categories": {
+      "necessary": {
+        "label": "Necessary",
+        "description": "Language, the wall with your posters and your choice on this notice, saved only in your browser. They are needed for the app to work and cannot be turned off.",
+        "alwaysActive": "Always active"
+      }
+    }
+  },
+  "legal": {
+    "close": "Close",
+    "cookiePolicy": {
+      "title": "Cookie Policy",
+      "content": "<h2>What the app stores</h2><p>The app sets no cookies. It only uses the browser local storage (localStorage) for three technical items: the chosen language, the layout of the posters on the wall and the choice made in the data notice.</p><h2>What it does not do</h2><p>No analytics, no tracking, no advertising, no third-party scripts. The data stays in your browser and you can delete it at any time from the browser settings or with the button that clears the wall.</p><h2>Changing your choice</h2><p>You can reopen the preferences from the link in the footer.</p>"
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "content": "<h2>Controller and data processed</h2><p>Unofficial tool, not affiliated with Displate, meant to run locally on your own computer. The author does not collect, receive or store any personal data: the wall and the preferences stay in your browser.</p><h2>Searches and images</h2><p>When you search for a poster, the request goes from the local proxy of the app to displate.com. Poster images are loaded from Displate servers, which can therefore see your IP address according to their own policy. Images belong to their owners.</p><h2>Your rights</h2><p>Since no data reaches the author, you can delete everything from the browser whenever you want.</p>"
+    }
   }
 }

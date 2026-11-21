@@ -7,7 +7,11 @@
   "footer": {
     "version": "v{version}",
     "credits": "Credits",
-    "disclaimer": "Strumento non ufficiale, non affiliato a Displate. Le immagini appartengono ai rispettivi proprietari."
+    "disclaimer": "Strumento non ufficiale, non affiliato a Displate. Le immagini appartengono ai rispettivi proprietari.",
+    "cookieLink": "Preferenze cookie",
+    "cookiePolicy": "Cookie Policy",
+    "privacyPolicy": "Privacy Policy",
+    "legal": "Informazioni legali"
   },
   "header": {
     "language": "Lingua"
@@ -15,5 +19,38 @@
   "panels": {
     "search": "Cerca poster",
     "wall": "La tua parete"
+  },
+  "cookies": {
+    "banner": {
+      "title": "Dati salvati nel browser",
+      "description": "Questa app salva nel tuo browser solo i dati necessari al suo funzionamento: la lingua, la parete e la tua scelta qui. Nessun cookie, nessuna analisi, nessun tracciamento. Puoi accettare, rifiutare o vedere i dettagli.",
+      "acceptAll": "Accetta",
+      "rejectAll": "Rifiuta",
+      "customize": "Personalizza"
+    },
+    "preferences": {
+      "title": "Preferenze",
+      "save": "Salva preferenze",
+      "close": "Chiudi",
+      "reopenLink": "Preferenze cookie"
+    },
+    "categories": {
+      "necessary": {
+        "label": "Necessari",
+        "description": "Lingua, parete con i poster e la tua scelta su questo avviso, salvati solo nel tuo browser. Servono al funzionamento dell'app e non possono essere disattivati.",
+        "alwaysActive": "Sempre attivi"
+      }
+    }
+  },
+  "legal": {
+    "close": "Chiudi",
+    "cookiePolicy": {
+      "title": "Cookie Policy",
+      "content": "<h2>Cosa salva l'app</h2><p>L'app non imposta cookie. Usa solo lo storage locale del browser (localStorage) per tre dati tecnici: la lingua scelta, la disposizione dei poster sulla parete e la scelta fatta nell'avviso sui dati.</p><h2>Cosa non fa</h2><p>Nessuna analisi, nessun tracciamento, nessuna pubblicità, nessuno script di terze parti. I dati restano nel tuo browser e puoi cancellarli in ogni momento dalle impostazioni del browser o con il pulsante per svuotare la parete.</p><h2>Cambiare scelta</h2><p>Puoi riaprire le preferenze dal link nel piè di pagina.</p>"
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "content": "<h2>Titolare e dati trattati</h2><p>Strumento non ufficiale e non affiliato a Displate, pensato per l'uso in locale sul proprio computer. L'autore non raccoglie, riceve né conserva alcun dato personale: la parete e le preferenze restano nel tuo browser.</p><h2>Ricerche e immagini</h2><p>Quando cerchi un poster, la richiesta passa dal proxy locale dell'app verso displate.com. Le immagini dei poster sono caricate dai server di Displate, che può quindi vedere il tuo indirizzo IP secondo la propria informativa. Le immagini appartengono ai rispettivi proprietari.</p><h2>I tuoi diritti</h2><p>Poiché nessun dato arriva all'autore, puoi cancellare tutto dal browser quando vuoi.</p>"
+    }
   }
 }
