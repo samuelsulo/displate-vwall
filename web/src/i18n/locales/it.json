@@ -68,5 +68,11 @@
     "errorRateLimited": "Troppe ricerche in poco tempo. Rallenta e riprova tra {seconds} secondi.",
     "errorNetwork": "Impossibile contattare Displate. Controlla la connessione e riprova.",
     "errorApi": "Displate ha risposto con un errore. Riprova tra poco."
+  },
+  "sizes": {
+    "dimensions": "{width} x {height} cm",
+    "add": "Aggiungi in taglia {size} ({dimensions})",
+    "addToWall": "Aggiungi \"{title}\" alla parete",
+    "added": "Aggiunto alla parete: {title}, taglia {size}."
   }
 }

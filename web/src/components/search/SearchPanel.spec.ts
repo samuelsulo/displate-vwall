@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { flushPromises, mount } from '@vue/test-utils'
 import SearchPanel from './SearchPanel.vue'
 import { i18n } from '@/i18n'
+import { useWall } from '@/composables/useWall'
 import { RateLimitedError, displateService } from '@/services/displateService'
 import type { SearchPage } from '@/types/poster'
 
@@ -97,5 +98,20 @@ describe('SearchPanel', () => {
     expect(alert.text()).toContain('Slow down')
     expect(alert.text()).toContain('17')
     expect(alert.find('button').exists()).toBe(true)
+  })
+
+  it('adds a poster to the wall in the chosen size, also more than once', async () => {
+    search.mockResolvedValue(result)
+    const wall = useWall()
+    wall.items.value = []
+    const wrapper = mountPanel()
+    await wrapper.find('input').setValue('dragon')
+    await wrapper.find('form').trigger('submit')
+    await flushPromises()
+    const large = wrapper.findAll('.size-picker__button')[1]!
+    await large.trigger('click')
+    await large.trigger('click')
+    expect(wall.items.value.map((item) => item.size)).toEqual(['L', 'L'])
+    expect(wrapper.find('p.sr-only').text()).toContain('Added to the wall')
   })
 })

@@ -1,0 +1,5 @@
+[
+  { "id": "M", "width": 32, "height": 45 },
+  { "id": "L", "width": 48, "height": 67.5 },
+  { "id": "XL", "width": 64, "height": 90 }
+]
