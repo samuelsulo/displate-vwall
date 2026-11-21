@@ -26,6 +26,12 @@ export default defineConfigWithVueTs(
     files: ['src/**/*.spec.ts'],
   },
 
+  {
+    name: 'app/branding-components',
+    files: ['src/components/ui/Kitsune.vue'],
+    rules: { 'vue/multi-word-component-names': 'off' },
+  },
+
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
   skipFormatting,
