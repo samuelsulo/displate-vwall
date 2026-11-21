@@ -74,5 +74,18 @@
     "add": "Aggiungi in taglia {size} ({dimensions})",
     "addToWall": "Aggiungi \"{title}\" alla parete",
     "added": "Aggiunto alla parete: {title}, taglia {size}."
+  },
+  "wall": {
+    "width": "Larghezza (cm)",
+    "height": "Altezza (cm)",
+    "color": "Colore parete",
+    "empty": "Aggiungi un poster dai risultati della ricerca.",
+    "hint": "Trascina i poster oppure selezionali e usa le frecce per spostarli di 5 cm. Canc rimuove il poster selezionato.",
+    "itemLabel": "{title}, taglia {size}, posizione {x} x {y} cm",
+    "selected": "Poster selezionato",
+    "size": "Taglia",
+    "setSize": "Cambia in taglia {size} ({dimensions})",
+    "bringToFront": "Porta in primo piano",
+    "remove": "Rimuovi"
   }
 }
