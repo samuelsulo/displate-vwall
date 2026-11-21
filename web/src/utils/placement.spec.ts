@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { findFreeSpot, overlaps } from './placement'
+import { clampPosition, findFreeSpot, overlaps, snap, snapAndClamp } from './placement'
 
 const wall = { width: 300, height: 250 }
 
@@ -34,5 +34,29 @@ describe('findFreeSpot', () => {
     const spot = findFreeSpot(taken, { width: 90, height: 64 }, wall)
     expect(spot.x + 90).toBeLessThanOrEqual(300)
     expect(spot.y + 64).toBeLessThanOrEqual(250)
+  })
+})
+
+describe('snap and clamp', () => {
+  it('snaps to 5 cm', () => {
+    expect(snap(12)).toBe(10)
+    expect(snap(13)).toBe(15)
+  })
+
+  it('keeps the poster inside the wall', () => {
+    const poster = { width: 90, height: 64 }
+    expect(snapAndClamp({ x: -40, y: 999 }, poster, wall)).toEqual({ x: 0, y: 186 })
+    expect(snapAndClamp({ x: 999, y: 3 }, poster, wall)).toEqual({ x: 210, y: 5 })
+  })
+
+  it('clamps without snapping', () => {
+    expect(clampPosition({ x: 12.5, y: 20 }, { width: 32, height: 45 }, wall)).toEqual({
+      x: 12.5,
+      y: 20,
+    })
+    expect(clampPosition({ x: 290, y: 0 }, { width: 32, height: 45 }, wall)).toEqual({
+      x: 268,
+      y: 0,
+    })
   })
 })

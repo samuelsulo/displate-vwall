@@ -74,5 +74,18 @@
     "add": "Add in size {size} ({dimensions})",
     "addToWall": "Add \"{title}\" to the wall",
     "added": "Added to the wall: {title}, size {size}."
+  },
+  "wall": {
+    "width": "Width (cm)",
+    "height": "Height (cm)",
+    "color": "Wall color",
+    "empty": "Add a poster from the search results.",
+    "hint": "Drag the posters, or select one and use the arrow keys to move it by 5 cm. Delete removes the selected poster.",
+    "itemLabel": "{title}, size {size}, position {x} x {y} cm",
+    "selected": "Selected poster",
+    "size": "Size",
+    "setSize": "Change to size {size} ({dimensions})",
+    "bringToFront": "Bring to front",
+    "remove": "Remove"
   }
 }

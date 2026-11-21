@@ -5,6 +5,7 @@ import CookieConsentBanner from '@/components/cookies/CookieConsentBanner.vue'
 import CookiePreferencesModal from '@/components/cookies/CookiePreferencesModal.vue'
 import LegalPolicyModal from '@/components/cookies/LegalPolicyModal.vue'
 import SearchPanel from '@/components/search/SearchPanel.vue'
+import WallPanel from '@/components/wall/WallPanel.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import { useLocale } from '@/composables/useLocale'
 
@@ -23,6 +24,7 @@ useLocale().syncDocument()
       </section>
       <section class="app-panel" aria-labelledby="wall-title">
         <h2 id="wall-title">{{ t('panels.wall') }}</h2>
+        <WallPanel />
       </section>
     </main>
     <AppFooter />
@@ -44,8 +46,13 @@ useLocale().syncDocument()
 .app-main {
   flex: 1;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   padding: var(--space-4);
+}
+
+.app-panel {
+  min-width: 0;
 }
 
 .app-panel h2 {
@@ -56,7 +63,7 @@ useLocale().syncDocument()
 /* Panels stack on phone and sit side by side from tablet width. */
 @media (min-width: 48rem) {
   .app-main {
-    grid-template-columns: minmax(18rem, 2fr) 3fr;
+    grid-template-columns: minmax(18rem, 2fr) minmax(0, 3fr);
     align-items: start;
   }
 }

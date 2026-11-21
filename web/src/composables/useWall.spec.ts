@@ -39,4 +39,65 @@ describe('useWall', () => {
     const next = addPoster(vertical, 'M')
     expect(next.x).toBe(45)
   })
+
+  it('selects the poster that was just added', () => {
+    const { selectedUid, addPoster } = createWall()
+    const item = addPoster(vertical, 'M')
+    expect(selectedUid.value).toBe(item.uid)
+  })
+
+  it('moves with a 5 cm snap and stays inside the wall', () => {
+    const { addPoster, moveTo, moveBy } = createWall()
+    const item = addPoster(vertical, 'M')
+    moveTo(item.uid, 12, 33)
+    expect(item).toMatchObject({ x: 10, y: 35 })
+    moveBy(item.uid, 5, -5)
+    expect(item).toMatchObject({ x: 15, y: 30 })
+    moveTo(item.uid, -50, 9999)
+    expect(item).toMatchObject({ x: 0, y: 205 })
+  })
+
+  it('changes the size and keeps the poster inside the wall', () => {
+    const { addPoster, moveTo, setSize } = createWall()
+    const item = addPoster(vertical, 'M')
+    moveTo(item.uid, 9999, 9999)
+    setSize(item.uid, 'XL')
+    expect(item.size).toBe('XL')
+    expect(item.x + 64).toBeLessThanOrEqual(300)
+    expect(item.y + 90).toBeLessThanOrEqual(250)
+  })
+
+  it('removes a poster and clears the selection', () => {
+    const { items, selectedUid, addPoster, remove } = createWall()
+    const item = addPoster(vertical, 'M')
+    remove(item.uid)
+    expect(items.value).toEqual([])
+    expect(selectedUid.value).toBeNull()
+  })
+
+  it('brings a poster to the front', () => {
+    const { items, addPoster, bringToFront } = createWall()
+    const first = addPoster(vertical, 'M')
+    const second = addPoster({ ...vertical, id: 2 }, 'M')
+    bringToFront(first.uid)
+    expect(items.value.map((item) => item.uid)).toEqual([second.uid, first.uid])
+  })
+
+  it('resizes the wall within limits and pulls posters back inside', () => {
+    const { settings, addPoster, moveTo, setWallSize } = createWall()
+    const item = addPoster(vertical, 'M')
+    moveTo(item.uid, 250, 200)
+    setWallSize(100, 80)
+    expect(settings.value).toMatchObject({ width: 100, height: 80 })
+    expect(item.x + 32).toBeLessThanOrEqual(100)
+    expect(item.y + 45).toBeLessThanOrEqual(80)
+    setWallSize(5, 99999)
+    expect(settings.value).toMatchObject({ width: 50, height: 1000 })
+  })
+
+  it('changes the wall color', () => {
+    const { settings, setWallColor } = createWall()
+    setWallColor('#ff0000')
+    expect(settings.value.color).toBe('#ff0000')
+  })
 })

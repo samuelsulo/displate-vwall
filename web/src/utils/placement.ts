@@ -37,3 +37,35 @@ export function findFreeSpot(
   const step = (taken.length % 6) * SNAP_CM * 2
   return { x: Math.min(step, maxX), y: Math.min(step, maxY) }
 }
+
+export function snap(value: number): number {
+  return Math.round(value / SNAP_CM) * SNAP_CM
+}
+
+/** Snaps a position to the grid and keeps the poster inside the wall. */
+export function snapAndClamp(
+  position: { x: number; y: number },
+  poster: Dimensions,
+  wall: Dimensions,
+): { x: number; y: number } {
+  const maxX = Math.max(0, wall.width - poster.width)
+  const maxY = Math.max(0, wall.height - poster.height)
+  return {
+    x: Math.min(maxX, Math.max(0, snap(position.x))),
+    y: Math.min(maxY, Math.max(0, snap(position.y))),
+  }
+}
+
+/** Keeps a position inside the wall without snapping it: used when the wall or the poster changes size. */
+export function clampPosition(
+  position: { x: number; y: number },
+  poster: Dimensions,
+  wall: Dimensions,
+): { x: number; y: number } {
+  const maxX = Math.max(0, wall.width - poster.width)
+  const maxY = Math.max(0, wall.height - poster.height)
+  return {
+    x: Math.min(maxX, Math.max(0, position.x)),
+    y: Math.min(maxY, Math.max(0, position.y)),
+  }
+}
