@@ -1,0 +1,14 @@
+# Pinned tools and tasks. A component adds the tools it needs (node, opentofu, terragrunt, ...).
+[tools]
+lefthook = "1"
+cocogitto = "6"
+gh = "2"
+gitleaks = "8"
+
+[tasks.setup]
+description = "Install the git hooks (lefthook install)"
+run = "lefthook install"
+
+[tasks.test]
+description = "Test scripts/check-style.sh in a temporary git repository"
+run = "scripts/test-check-style.sh"

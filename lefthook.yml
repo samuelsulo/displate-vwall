@@ -1,0 +1,16 @@
+# Git hooks. Hook names follow <component>-<action>. A component adds its own hooks when it is
+# created (see the repo-standard skill).
+commit-msg:
+  commands:
+    conventional-commit:
+      run: cog verify --file {1}
+
+pre-commit:
+  commands:
+    repo-check-style:
+      run: scripts/check-style.sh --staged
+
+pre-push:
+  commands:
+    conventional-commits:
+      run: cog check

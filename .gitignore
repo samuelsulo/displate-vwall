@@ -1,0 +1,31 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Infrastructure
+**/.terraform/
+**/.terragrunt-cache/
+**/.terragrunt-stack/
+.plans/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# OS and editor
+.DS_Store
+.idea/
+*.log

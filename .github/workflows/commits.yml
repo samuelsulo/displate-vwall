@@ -1,0 +1,24 @@
+name: Commits
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: commits-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cog-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: cocogitto/cocogitto-action@v4
+        with:
+          command: check
+          # Only the commits of the pull request: older history may predate the convention.
+          args: --ignore-merge-commits origin/${{ github.base_ref }}..HEAD
