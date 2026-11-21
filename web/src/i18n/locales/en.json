@@ -1,0 +1,10 @@
+{
+  "app": {
+    "name": "Displate Virtual Wall",
+    "description": "Try Displate posters on your wall, at real scale."
+  },
+  "footer": {
+    "version": "v{version}",
+    "credits": "Credits"
+  }
+}

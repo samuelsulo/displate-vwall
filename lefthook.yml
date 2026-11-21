@@ -8,3 +8,15 @@ pre-commit:
   commands:
     secrets-gitleaks:
       run: gitleaks git --pre-commit --staged --redact --no-banner
+    web-format:
+      root: web/
+      glob: "web/src/**/*.{ts,vue,css,json}"
+      run: npx prettier --check {staged_files}
+    web-lint:
+      root: web/
+      glob: "web/**/*.{ts,vue}"
+      run: npm run lint
+    web-type-check:
+      root: web/
+      glob: "web/**/*.{ts,vue}"
+      run: npm run type-check

@@ -4,6 +4,7 @@ lefthook = "1"
 cocogitto = "6"
 gh = "2"
 gitleaks = "8"
+node = "24"
 
 [tasks.setup]
 description = "Install the git hooks (lefthook install)"

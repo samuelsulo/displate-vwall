@@ -12,6 +12,7 @@ decided by each project according to its needs.
 | `cog.toml`, `lefthook.yml` | Conventional Commits (scopes, `commit-msg` hook) and the gitleaks `pre-commit` hook |
 | `mise.toml` | Pinned tools (lefthook, cocogitto, gh, gitleaks) and the `setup` task |
 | `.github/ISSUE_TEMPLATE/` | Issue templates: a starting point, extend or remove them |
+| `web/` | The Vue app, see [`web/README.md`](./web/README.md) |
 | `docs/` | Documentation of the project, structured as the project needs; starts with `working-method.md` |
 
 ## How we work
