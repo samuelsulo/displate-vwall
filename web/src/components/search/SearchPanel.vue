@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PosterCard from '@/components/search/PosterCard.vue'
+import SizePicker from '@/components/search/SizePicker.vue'
 import { usePosterSearch } from '@/composables/usePosterSearch'
+import { useWall } from '@/composables/useWall'
+import type { Poster } from '@/types/poster'
+import type { SizeId } from '@/types/wall'
 
 const { t } = useI18n()
 const {
@@ -19,6 +23,14 @@ const {
   loadMore,
   retry,
 } = usePosterSearch()
+
+const wall = useWall()
+const lastAdded = ref('')
+
+function addToWall(poster: Poster, size: SizeId) {
+  wall.addPoster(poster, size)
+  lastAdded.value = t('sizes.added', { title: poster.title, size })
+}
 
 const isLoading = computed(() => status.value === 'loading')
 
@@ -60,6 +72,8 @@ const errorMessage = computed(() => {
       </p>
     </div>
 
+    <p class="sr-only" aria-live="polite">{{ lastAdded }}</p>
+
     <div v-if="failure" class="search-panel__error" role="alert">
       <p>{{ errorMessage }}</p>
       <button type="button" class="search-panel__submit" @click="retry()">
@@ -68,7 +82,11 @@ const errorMessage = computed(() => {
     </div>
 
     <ul v-if="posters.length > 0" class="search-panel__grid">
-      <PosterCard v-for="poster in posters" :key="poster.id" :poster="poster" />
+      <PosterCard v-for="poster in posters" :key="poster.id" :poster="poster">
+        <template #actions="{ poster: item }">
+          <SizePicker :poster="item" @add="(size) => addToWall(item, size)" />
+        </template>
+      </PosterCard>
     </ul>
 
     <button

@@ -68,5 +68,11 @@
     "errorRateLimited": "Too many searches in a short time. Slow down and try again in {seconds} seconds.",
     "errorNetwork": "Could not reach Displate. Check your connection and try again.",
     "errorApi": "Displate answered with an error. Try again in a moment."
+  },
+  "sizes": {
+    "dimensions": "{width} x {height} cm",
+    "add": "Add in size {size} ({dimensions})",
+    "addToWall": "Add \"{title}\" to the wall",
+    "added": "Added to the wall: {title}, size {size}."
   }
 }
