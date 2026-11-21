@@ -1,40 +1,77 @@
-# template-project
+# Displate Virtual Wall
 
-Starting point for every project: a way of working and the base tools. Everything else (CI
-workflows, versioning and release, the structure of `docs/`, apps, infrastructure, brand) is
-decided by each project according to its needs.
+Search Displate posters, pick each one in a size (M, L or XL) and arrange them on a virtual wall at real
+scale, to see how they match before buying. The app runs on your own computer only.
 
-## What is in it
+![The app: search on the left, the virtual wall on the right](./docs/screenshot.jpg)
+
+> **Disclaimer.** Unofficial tool, not affiliated with Displate. Poster images and names belong to their
+> owners and are loaded from displate.com. Use it for personal planning and keep the request rate low.
+
+## What it does
+
+- Search Displate posters by keyword, with related searches and a load more button.
+- Pick M, L or XL for each poster: the size is shown in cm, aware of the orientation (vertical 32 x 45,
+  horizontal 45 x 32).
+- Set the wall size in cm (default 300 x 250) and its color, then drag the posters or move them with the
+  arrow keys (5 cm snap), change their size, bring them to front or remove them.
+- The wall is saved in your browser and restored on reload; a shopping list shows each poster with its
+  size, a link to displate.com and the total area.
+- Italian and English.
+
+## Requirements
+
+- [mise](https://mise.jdx.dev) to install the pinned tools (Node 24 and the repository tools).
+
+## Run it
+
+```bash
+mise install
+cd web && npm install
+npm run dev
+```
+
+Open the address printed by Vite (`http://127.0.0.1:5173`). For the production build:
+
+```bash
+npm run build && npm run preview
+```
+
+All the scripts (tests, lint, type check) are in [`web/README.md`](./web/README.md).
+
+## Why there is a proxy, and its limits
+
+The Displate search API sends no CORS headers, so a browser cannot call it directly. `npm run dev` and
+`npm run preview` start a small proxy that forwards the search. It is built so that this public repository
+cannot be used to flood the Displate API:
+
+- It listens on `127.0.0.1` only and refuses clients that are not on the same machine.
+- It forwards one thing: `GET /displate-api/search`. Any other path is a 404, so it is not an open relay.
+- Only `phrase`, `size` (capped at 60) and `page` are forwarded; other parameters are dropped.
+- Rate limit of 20 requests per minute; beyond it the proxy answers `429` with `Retry-After` and the app
+  shows a slow down message.
+- On top of that the app waits at least one second between requests, caches the pages it has already
+  loaded and cancels the previous search when a new one starts.
+
+Details in [`web/README.md`](./web/README.md#displate-proxy).
+
+## Privacy
+
+No cookies, no analytics, no tracking. The language, the wall and your consent choice stay in your
+browser. Poster images are loaded from the Displate servers, which see your IP address.
+
+## Structure
 
 | Path | Purpose |
 |---|---|
-| `CLAUDE.md` | How we work and the rules for the agent, plus the project's own sections to fill in |
-| `cog.toml`, `lefthook.yml` | Conventional Commits (scopes, `commit-msg` hook) and the gitleaks `pre-commit` hook |
-| `mise.toml` | Pinned tools (lefthook, cocogitto, gh, gitleaks) and the `setup` task |
-| `.github/ISSUE_TEMPLATE/` | Issue templates: a starting point, extend or remove them |
 | `web/` | The Vue app, see [`web/README.md`](./web/README.md) |
-| `docs/` | Documentation of the project, structured as the project needs; starts with `working-method.md` |
+| `docs/` | Documentation of the project, starts with [`working-method.md`](./docs/working-method.md) |
+| `.github/` | Issue templates and CI workflows |
+| `CLAUDE.md`, `cog.toml`, `lefthook.yml`, `mise.toml` | Working rules, Conventional Commits, git hooks and pinned tools |
 
 ## How we work
 
-The developer works with the AI agent: first they plan and create the issues on GitHub, then each
-issue is solved by a pull request that closes it. One issue, one pull request. The method and the
-git strategy are in [`docs/working-method.md`](./docs/working-method.md); a project extends or
-changes them according to its needs.
-
-## Start a project
-
-1. Start from a tag, with a first commit that follows Conventional Commits:
-
-   ```
-   git clone --branch <tag> --depth 1 git@github.com:<owner>/template-project.git <name>
-   cd <name> && rm -rf .git && git init -b main && git add -A
-   git commit -m "chore(repo): start from template-project <tag>"
-   ```
-
-   Then create the GitHub repository from that folder and push, when the owner confirms
-   (`gh repo create <name> --private --source . --push`). Do not use "Use this template" on GitHub:
-   it makes a first commit called "Initial commit", which is not a Conventional Commit.
-2. Fill in the sections of `CLAUDE.md` and this README.
-3. `mise install && mise run setup` to install the tools and the git hooks.
-4. Add what the project needs: CI workflows, versioning and release, further hooks and tools.
+Plan, turn the plan into issues, solve each issue with its own pull request that closes it, and commit
+with Conventional Commits. The method and the git strategy are in
+[`docs/working-method.md`](./docs/working-method.md). After cloning, `mise install && mise run setup`
+installs the tools and the git hooks.

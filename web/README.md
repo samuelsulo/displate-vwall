@@ -1,7 +1,8 @@
 # Displate Virtual Wall (web)
 
 Vue app to browse Displate posters and arrange them on a virtual wall at real scale. Local use only.
-The full project description, setup and disclaimer are in the [root README](../README.md).
+The project description, quick start and disclaimer are in the [root README](../README.md); this file
+documents the app itself.
 
 ## Technology stack
 
@@ -38,15 +39,16 @@ npm run format:check  # Prettier check, used by CI
 ## Project structure
 
 ```text
+proxy/            Vite plugin: Displate search proxy, rate limiter, query validation
 src/
-├── components/   layout/ and ui/
-├── composables/  reusable logic (useX)
-├── data/         non-translatable typed data
+├── components/   cookies/, layout/, search/, ui/ and wall/
+├── composables/  state and reusable logic (useWall, usePosterSearch, useCookieConsent, ...)
+├── data/         non-translatable typed data (poster sizes, cookie categories)
 ├── i18n/         setup and locales/{it,en}.json
-├── services/     integration with external APIs
+├── services/     Displate search service and wall storage
 ├── styles/       design tokens and base styles
 ├── types/        shared TypeScript types
-└── utils/        pure functions
+└── utils/        pure functions (placement, sizes, summary, debounce)
 ```
 
 ## Content
