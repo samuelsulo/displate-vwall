@@ -66,3 +66,16 @@ See `.env.example`.
   footer link. Cookie Policy and Privacy Policy open as modals from the footer.
 - The only category is `necessary` (`src/data/cookie-categories.json`). If a new category is ever added,
   bump `CONSENT_VERSION` in `src/composables/useCookieConsent.ts` so visitors are asked again.
+
+## Displate proxy
+
+The Displate search API sends no CORS headers, so `npm run dev` and `npm run preview` start a small proxy
+(`proxy/`, a Vite plugin) that forwards the search for the browser.
+
+- Only `GET /displate-api/search` is forwarded, to `https://displate.com/elysium-api/user/v9/search`.
+  Any other path under `/displate-api/` is a 404: it is not an open relay.
+- Only `phrase` (1 to 100 characters), `size` (capped at 60) and `page` (1 to 100) are forwarded; any other
+  query parameter is dropped.
+- Rate limit: a token bucket of 20 requests per minute. Beyond it the proxy answers `429` with `Retry-After`.
+- The dev and preview servers listen on `127.0.0.1` only and the proxy refuses non-loopback clients.
+- The anonymous visitor id that the Displate search requires is a random UUID generated at each start.

@@ -10,7 +10,7 @@ pre-commit:
       run: gitleaks git --pre-commit --staged --redact --no-banner
     web-format:
       root: web/
-      glob: "web/src/**/*.{ts,vue,css,json}"
+      glob: "web/{src,proxy}/**/*.{ts,vue,css,json}"
       run: npx prettier --check {staged_files}
     web-lint:
       root: web/
