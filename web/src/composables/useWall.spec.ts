@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { createWall } from './useWall'
+import type { StoredWall } from '@/services/wallStorage'
 import type { Poster } from '@/types/poster'
 
 const vertical: Poster = {
@@ -99,5 +100,29 @@ describe('useWall', () => {
     const { settings, setWallColor } = createWall()
     setWallColor('#ff0000')
     expect(settings.value.color).toBe('#ff0000')
+  })
+
+  it('starts from a saved wall', () => {
+    const first = createWall()
+    first.setWallSize(400, 260)
+    first.setWallColor('#abcdef')
+    first.addPoster(vertical, 'L')
+    const saved: StoredWall = {
+      settings: { ...first.settings.value },
+      items: first.items.value.map((item) => ({ ...item })),
+    }
+    const restored = createWall(saved)
+    expect(restored.settings.value).toMatchObject({ width: 400, height: 260, color: '#abcdef' })
+    expect(restored.items.value).toEqual(saved.items)
+  })
+
+  it('clears the posters and keeps the wall', () => {
+    const { settings, items, selectedUid, addPoster, setWallColor, clear } = createWall()
+    setWallColor('#123456')
+    addPoster(vertical, 'M')
+    clear()
+    expect(items.value).toEqual([])
+    expect(selectedUid.value).toBeNull()
+    expect(settings.value.color).toBe('#123456')
   })
 })
