@@ -4,6 +4,7 @@ import AppFooter from '@/components/layout/AppFooter.vue'
 import CookieConsentBanner from '@/components/cookies/CookieConsentBanner.vue'
 import CookiePreferencesModal from '@/components/cookies/CookiePreferencesModal.vue'
 import LegalPolicyModal from '@/components/cookies/LegalPolicyModal.vue'
+import SearchPanel from '@/components/search/SearchPanel.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import { useLocale } from '@/composables/useLocale'
 
@@ -18,6 +19,7 @@ useLocale().syncDocument()
     <main id="main" class="app-main">
       <section class="app-panel" aria-labelledby="search-title">
         <h2 id="search-title">{{ t('panels.search') }}</h2>
+        <SearchPanel />
       </section>
       <section class="app-panel" aria-labelledby="wall-title">
         <h2 id="wall-title">{{ t('panels.wall') }}</h2>

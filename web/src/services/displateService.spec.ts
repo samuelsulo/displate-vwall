@@ -67,6 +67,14 @@ describe('displateService', () => {
     expect(result.related).toEqual(['fantasy', 'wyvern'])
   })
 
+  it('limits the related phrases', async () => {
+    const many = Array.from({ length: 40 }, (_, i) => ({ phrase: `p${i}` }))
+    const { service } = setup(
+      vi.fn<typeof fetch>(async () => json({ ...response, seo: { relatedSearches: many } })),
+    )
+    expect((await service.search('dragon')).related).toHaveLength(10)
+  })
+
   it('sizes the image by orientation', () => {
     expect(imageUrl('x/y', 'vertical')).toContain('857x1200')
     expect(imageUrl('x/y', 'horizontal')).toContain('1200x857')
