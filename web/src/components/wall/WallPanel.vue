@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import ShoppingList from '@/components/wall/ShoppingList.vue'
 import WallCanvas from '@/components/wall/WallCanvas.vue'
 import { MAX_WALL_CM, MIN_WALL_CM, useWall } from '@/composables/useWall'
 import { dimensionsFor, posterSizes } from '@/utils/sizes'
@@ -93,6 +94,8 @@ function sizeLabel(id: SizeId) {
         </button>
       </div>
     </section>
+
+    <ShoppingList />
   </div>
 </template>
 

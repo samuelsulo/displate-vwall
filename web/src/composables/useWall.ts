@@ -1,4 +1,5 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { loadWall, saveWall, type StoredWall } from '@/services/wallStorage'
 import type { Poster } from '@/types/poster'
 import type { SizeId, WallItem, WallSettings } from '@/types/wall'
 import { clampPosition, findFreeSpot, snapAndClamp } from '@/utils/placement'
@@ -18,9 +19,9 @@ function newUid(): string {
 }
 
 /** Wall state: the wall itself and the posters on it. */
-export function createWall() {
-  const settings = ref<WallSettings>({ ...DEFAULT_WALL })
-  const items = ref<WallItem[]>([])
+export function createWall(initial?: StoredWall) {
+  const settings = ref<WallSettings>({ ...(initial?.settings ?? DEFAULT_WALL) })
+  const items = ref<WallItem[]>(initial?.items ?? [])
   const selectedUid = ref<string | null>(null)
 
   function addPoster(poster: Poster, sizeId: SizeId): WallItem {
@@ -92,6 +93,12 @@ export function createWall() {
     }
   }
 
+  /** Removes every poster. The wall size and color stay. */
+  function clear() {
+    items.value = []
+    selectedUid.value = null
+  }
+
   function setWallColor(color: string) {
     settings.value.color = color
   }
@@ -109,6 +116,7 @@ export function createWall() {
     bringToFront,
     setWallSize,
     setWallColor,
+    clear,
   }
 }
 
@@ -116,7 +124,14 @@ export function itemDimensions(item: Pick<WallItem, 'size' | 'orientation'>) {
   return dimensionsFor(findSize(item.size), item.orientation)
 }
 
-const wall = createWall()
+const wall = createWall(loadWall() ?? undefined)
+
+// The wall is remembered across reloads.
+watch(
+  [wall.settings, wall.items],
+  () => saveWall({ settings: wall.settings.value, items: wall.items.value }),
+  { deep: true },
+)
 
 export function useWall() {
   return wall

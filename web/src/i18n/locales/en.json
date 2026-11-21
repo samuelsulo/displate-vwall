@@ -87,5 +87,15 @@
     "setSize": "Change to size {size} ({dimensions})",
     "bringToFront": "Bring to front",
     "remove": "Remove"
+  },
+  "list": {
+    "title": "Shopping list",
+    "empty": "The list fills up as you add posters to the wall.",
+    "copies": "×{count}",
+    "total": "Total: {count} posters, {area} m² of surface",
+    "clear": "Clear wall",
+    "confirmQuestion": "Remove all the posters from the wall?",
+    "confirmYes": "Yes, clear",
+    "cancel": "Cancel"
   }
 }

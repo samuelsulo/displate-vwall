@@ -87,5 +87,15 @@
     "setSize": "Cambia in taglia {size} ({dimensions})",
     "bringToFront": "Porta in primo piano",
     "remove": "Rimuovi"
+  },
+  "list": {
+    "title": "Cosa comprare",
+    "empty": "La lista si riempie man mano che aggiungi poster alla parete.",
+    "copies": "×{count}",
+    "total": "Totale: {count} poster, {area} m² di superficie",
+    "clear": "Svuota parete",
+    "confirmQuestion": "Rimuovere tutti i poster dalla parete?",
+    "confirmYes": "Sì, svuota",
+    "cancel": "Annulla"
   }
 }
