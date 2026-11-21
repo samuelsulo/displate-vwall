@@ -1,10 +1,19 @@
 {
   "app": {
     "name": "Displate Virtual Wall",
-    "description": "Try Displate posters on your wall, at real scale."
+    "description": "Try Displate posters on your wall, at real scale.",
+    "skipToContent": "Skip to content"
   },
   "footer": {
     "version": "v{version}",
-    "credits": "Credits"
+    "credits": "Credits",
+    "disclaimer": "Unofficial tool, not affiliated with Displate. Images belong to their owners."
+  },
+  "header": {
+    "language": "Language"
+  },
+  "panels": {
+    "search": "Search posters",
+    "wall": "Your wall"
   }
 }
