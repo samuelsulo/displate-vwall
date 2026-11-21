@@ -10,6 +10,7 @@ const DEFAULT_RETRY_AFTER_SECONDS = 60
 
 export const PAGE_SIZE = 24
 export const MIN_INTERVAL_MS = 1000
+export const MAX_RELATED = 10
 
 interface ApiArtwork {
   externalId: number
@@ -48,7 +49,7 @@ function toRelated(body: ApiSearchResponse, phrase: string): string[] {
     (item) => item.phrase,
   )
   const unique = new Set(all.filter((item) => item.toLowerCase() !== phrase.toLowerCase()))
-  return [...unique]
+  return [...unique].slice(0, MAX_RELATED)
 }
 
 export function mapSearchResponse(

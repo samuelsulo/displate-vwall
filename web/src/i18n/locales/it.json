@@ -52,5 +52,21 @@
       "title": "Privacy Policy",
       "content": "<h2>Titolare e dati trattati</h2><p>Strumento non ufficiale e non affiliato a Displate, pensato per l'uso in locale sul proprio computer. L'autore non raccoglie, riceve né conserva alcun dato personale: la parete e le preferenze restano nel tuo browser.</p><h2>Ricerche e immagini</h2><p>Quando cerchi un poster, la richiesta passa dal proxy locale dell'app verso displate.com. Le immagini dei poster sono caricate dai server di Displate, che può quindi vedere il tuo indirizzo IP secondo la propria informativa. Le immagini appartengono ai rispettivi proprietari.</p><h2>I tuoi diritti</h2><p>Poiché nessun dato arriva all'autore, puoi cancellare tutto dal browser quando vuoi.</p>"
     }
+  },
+  "search": {
+    "label": "Cerca poster Displate",
+    "placeholder": "Cerca per parola chiave",
+    "submit": "Cerca",
+    "related": "Ricerche correlate",
+    "loading": "Ricerca in corso...",
+    "loadingMore": "Caricamento...",
+    "loadMore": "Carica altri",
+    "retry": "Riprova",
+    "empty": "Nessun poster trovato per \"{phrase}\".",
+    "count": "{count} poster",
+    "viewOnDisplate": "Vedi \"{title}\" su displate.com (si apre in una nuova scheda)",
+    "errorRateLimited": "Troppe ricerche in poco tempo. Rallenta e riprova tra {seconds} secondi.",
+    "errorNetwork": "Impossibile contattare Displate. Controlla la connessione e riprova.",
+    "errorApi": "Displate ha risposto con un errore. Riprova tra poco."
   }
 }

@@ -52,5 +52,21 @@
       "title": "Privacy Policy",
       "content": "<h2>Controller and data processed</h2><p>Unofficial tool, not affiliated with Displate, meant to run locally on your own computer. The author does not collect, receive or store any personal data: the wall and the preferences stay in your browser.</p><h2>Searches and images</h2><p>When you search for a poster, the request goes from the local proxy of the app to displate.com. Poster images are loaded from Displate servers, which can therefore see your IP address according to their own policy. Images belong to their owners.</p><h2>Your rights</h2><p>Since no data reaches the author, you can delete everything from the browser whenever you want.</p>"
     }
+  },
+  "search": {
+    "label": "Search Displate posters",
+    "placeholder": "Search by keyword",
+    "submit": "Search",
+    "related": "Related searches",
+    "loading": "Searching...",
+    "loadingMore": "Loading...",
+    "loadMore": "Load more",
+    "retry": "Try again",
+    "empty": "No posters found for \"{phrase}\".",
+    "count": "{count} posters",
+    "viewOnDisplate": "View \"{title}\" on displate.com (opens in a new tab)",
+    "errorRateLimited": "Too many searches in a short time. Slow down and try again in {seconds} seconds.",
+    "errorNetwork": "Could not reach Displate. Check your connection and try again.",
+    "errorApi": "Displate answered with an error. Try again in a moment."
   }
 }
