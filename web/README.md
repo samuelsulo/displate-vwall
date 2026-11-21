@@ -57,3 +57,12 @@ lives in `src/data/*.json`. A unit test compiles every message of every locale.
 ## Environment variables
 
 See `.env.example`.
+
+## Cookie consent and privacy
+
+- The app sets no cookies. It stores only necessary data in localStorage: language, wall layout and the
+  consent choice. No analytics, no tracking, no third-party scripts.
+- Consent banner (accept and reject with the same prominence) and preferences modal, reopenable from the
+  footer link. Cookie Policy and Privacy Policy open as modals from the footer.
+- The only category is `necessary` (`src/data/cookie-categories.json`). If a new category is ever added,
+  bump `CONSENT_VERSION` in `src/composables/useCookieConsent.ts` so visitors are asked again.

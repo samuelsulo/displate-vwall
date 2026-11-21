@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import AppFooter from '@/components/layout/AppFooter.vue'
+import CookieConsentBanner from '@/components/cookies/CookieConsentBanner.vue'
+import CookiePreferencesModal from '@/components/cookies/CookiePreferencesModal.vue'
+import LegalPolicyModal from '@/components/cookies/LegalPolicyModal.vue'
 import AppHeader from '@/components/layout/AppHeader.vue'
 import { useLocale } from '@/composables/useLocale'
 
@@ -22,6 +25,9 @@ useLocale().syncDocument()
     </main>
     <AppFooter />
   </div>
+  <CookieConsentBanner />
+  <CookiePreferencesModal />
+  <LegalPolicyModal />
 </template>
 
 <style scoped>
